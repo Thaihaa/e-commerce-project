@@ -1,0 +1,33 @@
+﻿@model IEnumerable<DoAnCoSo.Models.Product>
+@{
+    ViewData["Title"] = "ProductByCategory";
+    Layout = "~/Views/Shared/ProductList.cshtml";
+}
+
+
+
+<div class="row">
+	@foreach (var item in Model)
+	{
+		<div class="col-md-4 col-xs-6">
+			<div class="product">
+				<div class="product-img">
+					<img src="~/@item.ProductImage" alt="">
+					<div class="product-label">
+					</div>
+				</div>
+				<div class="product-body">
+					<p class="product-category">@item.Category.CategoryName</p>
+					<h3 class="product-name"><a href="~/Products/ProductDetails?id=@item.ProductId">@item.ProductName</a></h3>
+					<h4 class="product-price">@item.ProductPrice ₫</h4>
+				</div>
+				<div class="add-to-cart">
+					<a class="btn btn-default" asp-action="Add" asp-controller="Cart" asp-route-Id="@item.ProductId" tabindex="-1"><i class="fa fa-shopping-cart"></i> Add To Cart</a>
+				</div>
+			</div>
+		</div>
+		<!-- /product -->
+		<div class="clearfix visible-sm visible-xs"></div>
+	}
+	<!-- /product -->
+</div>

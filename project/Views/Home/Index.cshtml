@@ -1,0 +1,116 @@
+﻿@model IEnumerable<DoAnCoSo.Models.Product>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="col-sm-12">
+	<div id="slider-carousel" class="carousel slide" data-ride="carousel">
+		<ol class="carousel-indicators">
+			<li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
+			<li data-target="#slider-carousel" data-slide-to="1"></li>
+		</ol>
+
+		<div class="carousel-inner">
+			<div class="item active">
+				<div class="col-sm-12">
+					<img src="~/img/banner1.png" width="100%" />
+				</div>
+
+			</div>
+			<div class="item">
+				<div class="col-sm-12">
+					<img src="~/img/banner2.png" width="100%" />
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="col-md-12">
+	<div class="section-title">
+		<h3 class="title">Sản phẩm </h3>
+	</div>
+</div>
+
+
+
+<div class="col-md-12">
+	<div class="row mb-4">
+		<div class="products-tabs">
+			<!-- tab -->
+			<div id="tab1" class="tab-pane active">
+				<div class="products-slick slick-initialized slick-slider">
+					
+					<div class="slick-list draggable">
+						<div class="slick-track">
+							
+							@foreach (var item in Model)
+							{
+								<div class="product slick-slide slick-current" tabindex="-1" style="width: 345px;" data-slick-index="0" aria-hidden="true">
+									<div class="product-img">
+										<img src="@item.ProductImage" alt="">
+									</div>
+									<div class="product-body">
+										<p class="product-category">@item.Category.CategoryName</p>
+										<h3 class="product-name"><a href="~/Products/ProductDetails?id=@item.ProductId" tabindex="-1">@item.ProductName</a></h3>
+										<h4 class="product-price">@item.ProductPrice ₫</h4>
+									</div>
+									<div class="add-to-cart">
+										@* <button class="add-to-cart-btn" asp-action="Add" asp-controller="Cart" asp-route-Id="@item.ProductId" tabindex="-1"><i class="fa fa-shopping-cart"></i> add to cart</button> *@
+										<a class="btn btn-default" asp-action="Add" asp-controller="Cart" asp-route-Id="@item.ProductId" tabindex="-1"><i class="fa fa-shopping-cart"></i> Add To Cart</a>
+										@* <a> <button class="add-to-cart-btn" asp-action="Add" asp-controller="Cart" asp-route-Id="@item.ProductId"><i tabindex="-1"><i class="fa fa-shopping-cart">></i>Add To Cart</button></a> *@
+									</div>
+								</div>
+							}				
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			<!-- /tab -->
+		</div>
+	</div>
+</div>
+
+&nbsp;
+
+
+<!-- NEWSLETTER -->
+
+<div id="newsletter" class="section">
+	<!-- container -->
+	<div class="container">
+		<!-- row -->
+		<div class="row">
+			<div class="col-md-12">
+				<div class="newsletter">
+					<p>Sign Up for the <strong>NEWSLETTER</strong></p>
+					<form>
+						<input class="input" type="email" placeholder="Enter Your Email">
+						<button class="newsletter-btn"><i class="fa fa-envelope"></i> Subscribe</button>
+					</form>
+					<ul class="newsletter-follow">
+						<li>
+							<a href="#"><i class="fa fa-facebook"></i></a>
+						</li>
+						<li>
+							<a href="#"><i class="fa fa-twitter"></i></a>
+						</li>
+						<li>
+							<a href="#"><i class="fa fa-instagram"></i></a>
+						</li>
+						<li>
+							<a href="#"><i class="fa fa-pinterest"></i></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- /row -->
+	</div>
+	<!-- /container -->
+</div>
+
+<!-- /NEWSLETTER -->

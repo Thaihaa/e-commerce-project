@@ -1,0 +1,129 @@
+﻿@using DoAnCoSo.ExtensionSession
+@model DoAnCoSo.Models.Product
+@{
+    ViewData["Title"] = "ProductDetails";
+    Layout = "~/Views/Shared/DetailView.cshtml";
+}
+
+<div class="container">
+	<!-- row -->
+	<div class="row">
+		<!-- Product main img -->
+		<div class="col-md-5 col-md-push-2">
+			<div id="product-main-img" class="slick-initialized slick-slider">
+				<div class="slick-list draggable">
+					<div class="slick-track" style="opacity: 1; width: 1832px;">
+						<div class="product-preview slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" tabindex="0" style="width: 458px; position: relative; left: 0px; top: 0px; z-index: 999; opacity: 1; overflow: hidden;">
+							<img src="~/@Model.ProductImage" alt="">
+							<img role="presentation" src="~/img/product01.png" class="zoomImg" style="position: absolute; top: -41.2358px; left: -8.37118px; opacity: 0; width: 600px; height: 600px; border: none; max-width: none; max-height: none;">
+						</div><div class="product-preview slick-slide" data-slick-index="1" aria-hidden="true" tabindex="-1" style="width: 458px; position: relative; left: -458px; top: 0px; z-index: 998; opacity: 0; overflow: hidden;">
+							<img src="~/img/product03.png" alt="">
+							<img role="presentation" src="file:///D:/%C4%90%E1%BB%93%20%C3%A1n%20c%C6%A1%20s%E1%BB%9F/electro-master/img/product03.png" class="zoomImg" style="position: absolute; top: 0px; left: 0px; opacity: 0; width: 600px; height: 600px; border: none; max-width: none; max-height: none;">
+						</div><div class="product-preview slick-slide" data-slick-index="2" aria-hidden="true" tabindex="-1" style="width: 458px; position: relative; left: -916px; top: 0px; z-index: 998; opacity: 0; overflow: hidden;">
+							<img src="~/img/product06.png" alt="">
+							<img role="presentation" src="file:///D:/%C4%90%E1%BB%93%20%C3%A1n%20c%C6%A1%20s%E1%BB%9F/electro-master/img/product06.png" class="zoomImg" style="position: absolute; top: 0px; left: 0px; opacity: 0; width: 600px; height: 600px; border: none; max-width: none; max-height: none;">
+						</div><div class="product-preview slick-slide" data-slick-index="3" aria-hidden="true" tabindex="-1" style="width: 458px; position: relative; left: -1374px; top: 0px; z-index: 998; opacity: 0; overflow: hidden;">
+							<img src="~/img/product08.png" alt="">
+							<img role="presentation" src="file:///D:/%C4%90%E1%BB%93%20%C3%A1n%20c%C6%A1%20s%E1%BB%9F/electro-master/img/product08.png" class="zoomImg" style="position: absolute; top: 0px; left: 0px; opacity: 0; width: 600px; height: 600px; border: none; max-width: none; max-height: none;">
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<!-- /Product main img -->
+		<!-- Product thumb imgs -->
+		<div class="col-md-2  col-md-pull-5">
+			<div id="product-imgs" class="slick-initialized slick-slider slick-vertical">
+				<div class="slick-list draggable" style="height: 465px; padding: 0px;">
+					<div class="slick-track" style="opacity: 1; height: 1860px; transform: translate3d(0px, -465px, 0px);">
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /Product thumb imgs -->
+		<!-- Product details -->
+		<div class="col-md-5">
+			<div class="product-details">
+				<a asp-action="ProductDetails" asp-controller="Products" asp-route-Id="@Model.ProductId">
+				<h2>Giá: @Model.ProductPrice đ</h2>
+				<p>@Model.ProductName</p>
+				<p>Danh mục: @Model.Category.CategoryName</p>
+				<p>Thương hiệu: @Model.Brand.BrandName</p>
+				</a>
+				<div class="add-to-cart">
+					<a class="btn btn-default" asp-action="Add" asp-controller="Cart" asp-route-Id="@Model.ProductId" tabindex="-1"><i class="fa fa-shopping-cart"></i> Add To Cart</a>				
+				</div>
+
+				@* <div class="choose">
+					<ul class="nav nav-pills nav-justified">
+						<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+					</ul>
+				</div> *@
+
+
+				<ul class="product-links">
+					<li>Share:</li>
+					<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+					<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+					<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+					<li><a href="#"><i class="fa fa-envelope"></i></a></li>
+				</ul>
+
+			</div>
+		</div>
+		<!-- /Product details -->
+		<!-- Product tab -->
+		<div class="col-md-12">
+			<div id="product-tab">
+				<!-- product tab nav -->
+				<ul class="tab-nav">
+					<li class="active"><a data-toggle="tab" href="#tab1">Description</a></li>
+				</ul>
+				<!-- /product tab nav -->
+				<!-- product tab content -->
+				<div class="tab-content">
+					<!-- tab1  -->
+					<div id="tab1" class="tab-pane fade in active">
+						<div class="row">
+							<div class="col-md-12">
+								<p>@Model.ProductDescription</p>
+							</div>
+						</div>
+					</div>
+					<!-- /tab1  -->
+					
+							<!-- Review Form -->
+							@* <div class="col-md-3">
+								<div id="review-form">
+									<form class="review-form">
+										<input class="input" type="text" placeholder="Your Name">
+										<input class="input" type="email" placeholder="Your Email">
+										<textarea class="input" placeholder="Your Review"></textarea>
+										<div class="input-rating">
+											<span>Your Rating: </span>
+											<div class="stars">
+												<input id="star5" name="rating" value="5" type="radio"><label for="star5"></label>
+												<input id="star4" name="rating" value="4" type="radio"><label for="star4"></label>
+												<input id="star3" name="rating" value="3" type="radio"><label for="star3"></label>
+												<input id="star2" name="rating" value="2" type="radio"><label for="star2"></label>
+												<input id="star1" name="rating" value="1" type="radio"><label for="star1"></label>
+											</div>
+										</div>
+										<button class="primary-btn">Submit</button>
+									</form>
+								</div>
+							</div> *@
+							<!-- /Review Form -->
+						</div>
+					</div>
+					<!-- /tab3  -->
+				</div>
+				<!-- /product tab content  -->
+			</div>
+		</div>
+		<!-- /product tab -->
+	</div>
+	<!-- /row -->
+</div>
+

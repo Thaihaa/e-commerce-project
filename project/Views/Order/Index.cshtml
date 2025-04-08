@@ -1,0 +1,41 @@
+﻿@model IEnumerable<OrderModel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h3>Order Manager</h3>
+
+<div class="w3-container">
+    <table class="w3-table-all">
+        <thead>
+            <tr class="w3-red">
+                <th>@Html.DisplayNameFor(model => model.UserName)</th>
+                <th>@Html.DisplayNameFor(model => model.OrderCode)</th>           
+                <th>@Html.DisplayNameFor(model => model.CreatedDate)</th>
+                <th>@Html.DisplayNameFor(model => model.Status)</th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.UserName)</td>
+                <td>@Html.DisplayFor(modelItem => item.OrderCode)</td>
+                <td>@Html.DisplayFor(modelItem => item.CreatedDate)</td>
+                <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                <td>
+                    @if(@item.Status == 1)
+                    {
+                        <span class="text text-success">Đơn hàng mới</span>
+                    }
+                    else
+                    {
+                        <span class="text text-success">Đơn hàng đã duyệt thành công</span>
+                    }
+                </td>
+                <td>
+                    <a asp-action="Delete" class="btn btn-warning btn-sm" asp-controller="Order" asp-route-id="@item.Id">Delete</a>
+            </tr>
+        }
+    </table>
+</div>
